@@ -22,5 +22,10 @@ func main() {
 	mux.Handle("/", th)
 
 	log.Println("Listening...")
-	http.ListenAndServe(":8000", mux)
+	err := http.ListenAndServe(":8000", mux)
+
+	if err != nil {
+		log.Fatalf("Could not start service %v", err)
+	}
+
 }
